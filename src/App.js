@@ -9,12 +9,23 @@ import { useState } from "react";
 
 function App() {
   const [itemsData,setitemsData]=useState(items);
+  
+  const filterByCat=(cat)=>{
+    if(cat=='الكل')
+      {
+      return  setitemsData(items)
+      }
+   const filteredData= items.filter((c)=>{
+      return c.category==cat
+    })
+    setitemsData(filteredData)
+  }
   return (
     <div className="color-body font">
      <UpperNavBar></UpperNavBar>
     <Container>
 <Header></Header>
-<Category></Category>
+<Category func={filterByCat}></Category>
 <CardItem itemsData={itemsData}></CardItem>
     </Container>
 
