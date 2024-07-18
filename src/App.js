@@ -9,7 +9,7 @@ import { useState } from "react";
 
 function App() {
   const [itemsData,setitemsData]=useState(items);
-  
+  const allCats=['الكل',...new Set( items.map((i)=>i.category))]
   const filterByCat=(cat)=>{
     if(cat=='الكل')
       {
@@ -20,12 +20,24 @@ function App() {
     })
     setitemsData(filteredData)
   }
+
+  const filterByWord=(w)=>{
+    if(w!=="")
+      {
+        const searchData= items.filter((c)=>{
+          return c.title==w
+        })
+        setitemsData(searchData)
+      }
+  
+  }
+
   return (
     <div className="color-body font">
-     <UpperNavBar></UpperNavBar>
+     <UpperNavBar search={filterByWord}></UpperNavBar>
     <Container>
 <Header></Header>
-<Category func={filterByCat}></Category>
+<Category allCats={allCats} func={filterByCat}></Category>
 <CardItem itemsData={itemsData}></CardItem>
     </Container>
 

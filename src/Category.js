@@ -1,14 +1,19 @@
 import React from 'react'
 import {Container, Nav, Navbar, Row,Form,Button, Col} from 'react-bootstrap'
-const Category = ({func}) => {
+const Category = ({func ,allCats}) => {
   return (
     <Row>
       <Col  className='d-flex justify-content-center m-4'>
-<button onClick={()=>func('الكل')} className='btn mx-2' style={{border: '1px solid #b125'}}>الكل</button>
 
-<button onClick={()=>func('فطار')} className='btn mx-2' style={{border: '1px solid #b125'}}>أفطار</button>
-<button onClick={()=>func('غدا')} className='btn mx-2' style={{border: '1px solid #b125'}}>غداء</button>
-<button onClick={()=>func('عشاء')} className='btn mx-2' style={{border: '1px solid #b125'}}>عشاء</button>
+
+{
+
+allCats.length>0 ?(allCats.map((c)=>{
+  return( <button onClick={()=>func(c)} className='btn mx-2' style={{border: '1px solid #b125'}}>{c}</button>)
+})):<h1>لا يوجد وجبات</h1>
+
+}
+
       </Col>
     </Row>
   )

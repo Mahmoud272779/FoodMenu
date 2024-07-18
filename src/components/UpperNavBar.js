@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Container, Nav, Navbar, Row,Form,Button} from 'react-bootstrap'
-const UpperNavBar = () => {
+const UpperNavBar = ({search}) => {
+  const [word,setword]=useState('')
   return (
     <Row>
       <Navbar expand="lg" className="bg-body-tertiary" bg='dark' variant='dark'>
@@ -16,14 +17,26 @@ const UpperNavBar = () => {
             
           </Nav>
           <Form className="d-flex">
-            <Form.Control
-              type="..ابحث"
-              placeholder="بحث"
-              className="me-2"
-              aria-label="بحث"
-            />
-            <button className='btn-search mx-2' >بحث</button>
-          </Form>
+  <Form.Control
+    type='text'
+    placeholder="بحث"
+    className="me-2"
+    aria-label="بحث"
+    onChange={(e) => setword(e.target.value)}
+    value={word}
+  />
+  <button 
+    onClick={(e) => {
+      e.preventDefault(); // Prevents the form from submitting
+      search(word);
+      setword('')
+    }} 
+    className='btn-search mx-2'
+  >
+    بحث
+  </button>
+</Form>
+
         </Navbar.Collapse>
       </Container>
     </Navbar>
