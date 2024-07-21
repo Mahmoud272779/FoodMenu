@@ -1,12 +1,17 @@
 import React from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
+import { Fade, Roll, Zoom } from 'react-reveal'
 
 const CardItem = ({itemsData}) => {
   return (
     <Row>
+   
 <Col sm='12' className='mb-3'>
+<Roll>
+<></>
        {   itemsData.length!=0 ?(itemsData.map((item) => {
-            return (<Card className='d-flex flex-row m-3'>
+            return (
+              <Card className='d-flex flex-row m-3'>
             <Card.Img className='img-item' variant="top" src={item.imgUrl} />
             <Card.Body>
               <Card.Title className='justify-content-between d-flex'>
@@ -21,11 +26,15 @@ const CardItem = ({itemsData}) => {
               </div>
               </Card.Text>
             </Card.Body>
-          </Card>)
+          </Card>
+          )
        
           })):<h1>لا يوجد وجبات</h1>
        }
+       </Roll>
           </Col>
+         
+  
     </Row>
   )
 }

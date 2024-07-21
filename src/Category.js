@@ -1,8 +1,11 @@
 import React from 'react'
 import {Container, Nav, Navbar, Row,Form,Button, Col} from 'react-bootstrap'
+import { Roll } from 'react-reveal'
 const Category = ({func ,allCats}) => {
   return (
+   
     <Row>
+     <Roll>
       <Col  className='d-flex justify-content-center m-4'>
 
 
@@ -15,6 +18,7 @@ allCats.length>0 ?(allCats.map((c)=>{
 }
 
       </Col>
+      </Roll>
     </Row>
   )
 }
